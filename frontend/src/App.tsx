@@ -9,6 +9,8 @@ import Footer from './components/layout/Footer';
 
 // Pages
 import HomePage from './pages/HomePage';
+import DemoHomePage from './pages/DemoHomePage';
+import DemoAdminDashboard from './pages/DemoAdminDashboard';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import BusinessListPage from './pages/BusinessListPage';
@@ -39,6 +41,20 @@ import CustomerManagementPage from './pages/CustomerManagementPage';
 import AnalyticsReportsPage from './pages/AnalyticsReportsPage';
 import BusinessSettingsPage from './pages/BusinessSettingsPage';
 
+// Advanced Components
+import AdvancedAnalytics from './components/advanced/AdvancedAnalytics';
+import LiveChatSupport from './components/advanced/LiveChatSupport';
+import AIRecommendationEngine from './components/advanced/AIRecommendationEngine';
+import RealTimeDeliveryTracking from './components/advanced/RealTimeDeliveryTracking';
+import SocialFeatures from './components/advanced/SocialFeatures';
+import MultimediaAndVoiceFeatures from './components/advanced/MultimediaAndVoiceFeatures';
+import VoiceAndMultimediaHub from './components/multimedia/VoiceAndMultimediaHub';
+
+// CRUD Components
+import ProductCRUD from './components/crud/ProductCRUD';
+import BusinessCRUD from './components/crud/BusinessCRUD';
+import AdminCRUDDashboard from './components/crud/AdminCRUDDashboard';
+
 import './App.css';
 
 // Landing page component
@@ -57,6 +73,18 @@ const LandingPage: React.FC = () => {
         <div className="flex space-x-4">
           <a
             className="App-link bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg transition-colors"
+            href="/demo"
+          >
+            Try Demo
+          </a>
+          <a
+            className="App-link bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg transition-colors"
+            href="/admin/demo"
+          >
+            Admin Demo
+          </a>
+          <a
+            className="App-link bg-purple-500 hover:bg-purple-600 px-6 py-3 rounded-lg transition-colors"
             href="/home"
           >
             Get Started
@@ -67,6 +95,28 @@ const LandingPage: React.FC = () => {
           >
             Join as Business
           </a>
+        </div>
+        <div className="mt-8 grid grid-cols-2 gap-4 text-sm">
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <h3 className="text-yellow-400 font-semibold mb-2">🎮 Demo Features</h3>
+            <ul className="text-left space-y-1">
+              <li>• Full CRUD Operations</li>
+              <li>• AI Recommendations</li>
+              <li>• Voice Commands</li>
+              <li>• Real-time Tracking</li>
+              <li>• Social Features</li>
+            </ul>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <h3 className="text-green-400 font-semibold mb-2">🚀 Advanced Tools</h3>
+            <ul className="text-left space-y-1">
+              <li>• Live Chat Support</li>
+              <li>• Analytics Dashboard</li>
+              <li>• Multimedia Hub</li>
+              <li>• AR Food Recognition</li>
+              <li>• Smart Filters</li>
+            </ul>
+          </div>
         </div>
         <p className="mt-8 text-sm opacity-75">
           Connect customers with local businesses • Tiffin • Food • Services
@@ -93,6 +143,7 @@ function App() {
                   <main className="flex-1">
                     <Routes>
                     <Route path="/home" element={<HomePage />} />
+                    <Route path="/demo" element={<DemoHomePage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/businesses" element={<BusinessListPage />} />
@@ -102,12 +153,27 @@ function App() {
                     <Route path="/wishlist" element={<WishlistPage />} />
                     <Route path="/orders" element={<OrderHistoryPage />} />
                     
+                    {/* Advanced Feature Routes */}
+                    <Route path="/advanced/analytics" element={<AdvancedAnalytics />} />
+                    <Route path="/advanced/chat" element={<LiveChatSupport />} />
+                    <Route path="/advanced/ai-recommendations" element={<AIRecommendationEngine />} />
+                    <Route path="/advanced/tracking" element={<RealTimeDeliveryTracking orderId="demo123" />} />
+                    <Route path="/advanced/social" element={<SocialFeatures />} />
+                    <Route path="/advanced/multimedia" element={<MultimediaAndVoiceFeatures />} />
+                    <Route path="/multimedia/hub" element={<VoiceAndMultimediaHub />} />
+                    
+                    {/* CRUD Routes */}
+                    <Route path="/crud/products" element={<ProductCRUD />} />
+                    <Route path="/crud/businesses" element={<BusinessCRUD />} />
+                    <Route path="/crud/admin" element={<AdminCRUDDashboard />} />
+                    
                     {/* Admin Routes */}
                     <Route path="/admin/dashboard" element={
                       <ProtectedRoute requiredRole="admin">
                         <AdminDashboard />
                       </ProtectedRoute>
                     } />
+                    <Route path="/admin/demo" element={<DemoAdminDashboard />} />
                     
                     {/* Business Routes */}
                     <Route path="/business/dashboard" element={
