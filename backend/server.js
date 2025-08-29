@@ -20,6 +20,8 @@ const searchRoutes = require('./routes/search');
 const paymentRoutes = require('./routes/payments');
 const subscriptionRoutes = require('./routes/subscriptions');
 const debugRoutes = require('./routes/debug');
+const advancedFeatureRoutes = require('./routes/advancedFeatures');
+const multimediaRoutes = require('./routes/multimedia');
 require('dotenv').config();
 
 const app = express();
@@ -64,6 +66,8 @@ app.use('/api/notifications', notificationRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/advanced', advancedFeatureRoutes);
+app.use('/api/multimedia', multimediaRoutes);
 
 // Start Subscription Processing (Cron Job)
 const { processDueSubscriptions } = require('./controllers/subscriptionController');
